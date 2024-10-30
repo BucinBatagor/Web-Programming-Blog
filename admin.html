@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="assets/css/style-admin.css">
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('add-article').style.display = 'none';
+            document.getElementById('manage-data').style.display = 'none';
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const section = urlParams.get('section');
+            if (section === 'manage-data') {
+                showSection('manage-data');
+            } else {
+                showSection('add-article');
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside class="sidebar">
+            <h1>Dashboard Admin</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('add-article')">Tambah Artikel</a></li>
+                    <li><a href="#" onclick="showSection('manage-data')">Kelola Artikel</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="add-article">
+                <h2>Tambah Artikel Baru</h2>
+                <form method="POST" enctype="multipart/form-data" action="assets/php/create.php">
+                    <div class="form-group">
+                        <label for="articleAuthor">Penulis</label>
+                        <input type="text" id="articleAuthor" name="penulis" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleTitle">Judul</label>
+                        <input type="text" id="articleTitle" name="judul" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleCategory">Kategori</label>
+                        <select id="articleCategory" name="kategori" class="form-control" required>
+                            <option value="">Pilih Kategori</option>
+                            <option value="Teknologi">Teknologi</option>
+                            <option value="Gaya Hidup">Gaya Hidup</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleContent">Konten</label>
+                        <textarea id="articleContent" name="konten" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleImage">Gambar</label>
+                        <input type="file" id="articleImage" name="gambar" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn">Tambah Artikel</button>
+                </form>
+            </section>
+
+            <section id="manage-data" style="display: none;">
+                <h2>Kelola Artikel</h2>
+                <table id="article-table">
+                    <thead>
+                        <tr>
+                            <th>Penulis</th>
+                            <th>Judul</th>
+                            <th>Kategori</th>
+                            <th>Konten</th>
+                            <th>Gambar</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="article-body">
+                        <!-- Data artikel akan dimuat di sini -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadArticles();
+
+            function loadArticles() {
+                fetch('assets/php/read.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('article-body').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading articles:', error));
+            }
+
+            document.addEventListener('click', function (event) {
+                if (event.target.classList.contains('edit-btn')) {
+                    const row = event.target.closest('tr');
+                    row.querySelectorAll('.editable').forEach(cell => {
+                        cell.contentEditable = true;
+                        cell.classList.add('editing');
+                    });
+
+                    row.querySelector('[data-field="image-input"]').style.display = 'inline-block';
+                    event.target.style.display = 'none';
+                    row.querySelector('.save-btn').style.display = 'inline-block';
+                }
+
+                if (event.target.classList.contains('save-btn')) {
+                    const row = event.target.closest('tr');
+                    const id = event.target.getAttribute('data-id');
+                    const author = row.querySelector('[data-field="author"]').innerText;
+                    const title = row.querySelector('[data-field="title"]').innerText;
+                    const category = row.querySelector('[data-field="category"]').innerText;
+                    const content = row.querySelector('[data-field="content"]').innerText;
+
+                    const newImageInput = row.querySelector('[data-field="image-input"]');
+                    const newImageFile = newImageInput.files[0] || null;
+
+                    const formData = new FormData();
+                    formData.append('id', id);
+                    formData.append('author', author);
+                    formData.append('title', title);
+                    formData.append('category', category);
+                    formData.append('content', content);
+                    if (newImageFile) {
+                        formData.append('image', newImageFile);
+                    }
+
+                    fetch('assets/php/update.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                loadArticles();
+                            } else {
+                                console.error('Gagal memperbarui artikel:', response.statusText);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+
+                if (event.target.classList.contains('delete-btn')) {
+                    const id = event.target.getAttribute('data-id');
+                    if (confirm('Apakah Anda yakin ingin menghapus artikel ini?')) {
+                        window.location.href = `assets/php/delete.php?id=${id}`;
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

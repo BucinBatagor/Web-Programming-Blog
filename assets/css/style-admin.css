@@ -1,0 +1,149 @@
+/* Gaya umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Pastikan body memenuhi tinggi layar */
+}
+
+/* Wrapper untuk mengatur layout flex */
+.wrapper {
+    display: flex; /* Menggunakan flexbox untuk layout */
+    flex: 1; /* Memungkinkan wrapper untuk mengisi ruang yang tersedia */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #343a40; /* Warna latar belakang gelap */
+    color: #ffffff; /* Warna teks putih */
+    width: 250px; /* Lebar sidebar */
+    height: 100vh; /* Tinggi penuh layar */
+    padding: 20px; /* Ruang di dalam sidebar */
+    position: fixed; /* Tetap di posisi saat menggulir */
+    transition: background-color 0.3s; /* Transisi halus untuk perubahan warna */
+    display: flex; /* Menggunakan flexbox untuk sidebar */
+    flex-direction: column; /* Susunan vertikal untuk item sidebar */
+}
+
+/* Gaya untuk header sidebar */
+.sidebar h1 {
+    font-size: 24px; /* Ukuran font header */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+/* Gaya untuk tautan dalam sidebar */
+.sidebar nav {
+    flex: 1; /* Memungkinkan navigasi mengisi ruang yang tersisa */
+}
+
+.sidebar nav ul {
+    padding: 0; /* Hilangkan padding default */
+    list-style: none; /* Hilangkan bullet point */
+}
+
+.sidebar nav ul li {
+    margin: 15px 0; /* Jarak antar item */
+}
+
+.sidebar nav ul li a {
+    text-decoration: none; /* Hilangkan garis bawah pada tautan */
+    color: #ffffff; /* Warna teks */
+    padding: 10px 15px; /* Ruang dalam pada tautan */
+    display: block; /* Buat tautan memenuhi lebar */
+    border-radius: 5px; /* Sudut membulat */
+    transition: background-color 0.3s; /* Transisi halus untuk warna latar belakang */
+}
+
+/* Efek saat hover pada tautan */
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    background-color: #495057; /* Warna latar belakang saat hover */
+    color: #ffffff; /* Warna teks tetap putih */
+}
+
+/* Gaya untuk konten utama */
+.content {
+    margin-left: 315px; /* Jarak dari sidebar */
+    padding: 20px; /* Ruang dalam untuk konten */
+    flex: 1; /* Memungkinkan konten mengisi ruang yang tersedia */
+    background-color: #ffffff; /* Warna latar belakang konten */
+    border-radius: 5px; /* Sudut membulat pada konten */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk konten */
+    margin-top: 20px; /* Jarak atas untuk konten */
+    margin-bottom: 20px; /* Jarak bawah untuk konten */
+    margin-right: 20px; /* Jarak kanan untuk konten */
+}
+
+/* Style untuk tabel */
+#article-table {
+    width: 100%; /* Lebar penuh */
+    border-collapse: collapse; /* Gabungkan border */
+    table-layout: fixed; /* Mengatur tabel agar memiliki lebar tetap */
+}
+
+#article-table th, #article-table td {
+    border: 1px solid #ccc; /* Garis border abu-abu */
+    padding: 10px; /* Spasi dalam sel */
+    text-align: left; /* Rata kiri */
+    overflow-wrap: break-word; /* Memungkinkan teks untuk terputus */
+    word-wrap: break-word; /* Memungkinkan kata untuk terputus */
+    vertical-align: top; /* Mengatur konten vertikal ke atas */
+    white-space: normal; /* Biarkan teks terputus di baris baru */
+    overflow: hidden; /* Sembunyikan teks yang melebihi batas */
+    text-overflow: ellipsis; /* Tampilkan elipsis jika teks terlalu panjang */
+}
+
+/* Atur lebar kolom tetap untuk header */
+#article-table th {
+    background-color: #f2f2f2; /* Latar belakang abu-abu terang untuk header */
+}
+
+#article-table th:nth-child(4) { /* Ganti 4 dengan indeks kolom gambar */
+    width: 200px; /* Lebar untuk kolom gambar */
+}
+
+#article-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Latar belakang abu-abu terang untuk baris genap */
+}
+
+#article-table tr:hover {
+    background-color: #e1e1e1; /* Latar belakang saat hover */
+}
+
+/* Gaya untuk form group */
+.form-group {
+    margin-bottom: 15px; /* Jarak bawah antar form group */
+}
+
+/* Gaya untuk input control */
+.form-control {
+    width: 100%; /* Lebar penuh untuk input */
+    padding: 10px; /* Ruang dalam */
+    border: 1px solid #ced4da; /* Border default */
+    border-radius: 5px; /* Sudut membulat */
+}
+
+/* Gaya untuk tombol */
+.btn {
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: #ffffff; /* Warna teks tombol */
+    padding: 10px 15px; /* Ruang dalam tombol */
+    border: none; /* Tanpa border */
+    border-radius: 5px; /* Sudut membulat */
+    cursor: pointer; /* Ubah kursor saat hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Warna saat hover */
+}
+
+/* Gaya untuk file input */
+.file-input {
+    display: flex; /* Menggunakan flexbox untuk file input */
+    align-items: center; /* Rata tengah secara vertikal */
+    margin-top: 10px; /* Jarak atas untuk file input */
+}
+

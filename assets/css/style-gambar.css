@@ -1,0 +1,6 @@
+.radius-image, .card-img-bottom {
+    width: 100%;            /* Mengisi seluruh lebar elemen induk */
+    height: 250px;          /* Tetapkan tinggi yang sama untuk semua gambar */
+    object-fit: cover;      /* Memotong gambar jika terlalu besar, menjaga rasio */
+    border-radius: 8px;     /* Jika ingin sudut membulat */
+}
