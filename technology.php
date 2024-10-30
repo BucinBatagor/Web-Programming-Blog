@@ -331,10 +331,10 @@ if (!$result) {
     <footer class="w3l-footer-16">
         <div class="footer-content py-lg-5 py-4 text-center">
             <div class="container">
-                <div class="copy-right">
-                    <h6>© 2020 Design Blog . Made with <span class="fa fa-heart" aria-hidden="true"></span>, Designed by <a
-                            href="https://w3layouts.com">W3layouts</a> </h6>
-                </div>
+            <div class="copy-right">
+                    <h6>© 2024 Web Programming Blog . Made by <i>Nizar Khawarizmi </i> with <span class="fa fa-heart" aria-hidden="true"></span><br>Designed by
+                    <a href="https://w3layouts.com">W3layouts</a>
+                    </div>
                 <ul class="author-icons mt-4">
                     <li><a class="facebook" href="#url"><span class="fa fa-facebook" aria-hidden="true"></span></a> </li>
                     <li><a class="twitter" href="#url"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>

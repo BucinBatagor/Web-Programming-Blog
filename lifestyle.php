@@ -229,21 +229,21 @@ $totalPages = ceil($totalArticles / $articlesPerPage); // Calculate total pages
             </div>
 
             <!-- Pagination -->
-        <div class="pagination-wrapper mt-5">
-            <ul class="page-pagination">
-                <?php
-                // Display page numbers
-                for ($i = 1; $i <= $totalPages; $i++) {
-                    if ($i == $current_page) {
-                        echo "<li><span class='page-numbers current'>$i</span></li>";
-                    } else {
-                        echo "<li><a class='page-numbers' href='?page=$i'>$i</a></li>";
+            <div class="pagination-wrapper mt-5">
+                <ul class="page-pagination">
+                    <?php
+                    // Display page numbers
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        if ($i == $current_page) {
+                            echo "<li><span class='page-numbers current'>$i</span></li>";
+                        } else {
+                            echo "<li><a class='page-numbers' href='?page=$i'>$i</a></li>";
+                        }
                     }
-                }
-                ?>
-            </ul>
-        </div>
-        <!-- //Pagination -->
+                    ?>
+                </ul>
+            </div>
+            <!-- //Pagination -->
         </div>
     </div>
 
@@ -267,9 +267,9 @@ $totalPages = ceil($totalArticles / $articlesPerPage); // Calculate total pages
         <div class="footer-content py-lg-5 py-4 text-center">
             <div class="container">
                 <div class="copy-right">
-                    <h6>© 2020 Design Blog . Made with <span class="fa fa-heart" aria-hidden="true"></span>, Designed by <a
-                            href="https://w3layouts.com">W3layouts</a> </h6>
-                </div>
+                    <h6>© 2024 Web Programming Blog . Made by <i>Nizar Khawarizmi </i> with <span class="fa fa-heart" aria-hidden="true"></span><br>Designed by
+                    <a href="https://w3layouts.com">W3layouts</a>
+                    </div>
                 <ul class="author-icons mt-4">
                     <li><a class="facebook" href="#url"><span class="fa fa-facebook" aria-hidden="true"></span></a> </li>
                     <li><a class="twitter" href="#url"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
